@@ -10,5 +10,4 @@ beautifulsoup4
 httpx
 requests
 googlesearch-python
-google
 google-search

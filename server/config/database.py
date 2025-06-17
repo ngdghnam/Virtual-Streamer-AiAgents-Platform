@@ -19,26 +19,6 @@ def create_database():
         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {env_vars.DB_NAME}")
         logger.info(f"Database {env_vars.DB_NAME} created or already exists")
         
-        # Switch to the created database
-        cursor.execute(f"USE {env_vars.DB_NAME}")
-        
-        # Create users table
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                user_id INT AUTO_INCREMENT PRIMARY KEY,
-                student_id VARCHAR(12),
-                full_name VARCHAR(100) NOT NULL,
-                DOB DATETIME NOT NULL,
-                phone VARCHAR(20) NOT NULL,
-                personal_email VARCHAR(100) UNIQUE NOT NULL,
-                department VARCHAR(60) NOT NULL,
-                member_password VARCHAR(255) NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-            )
-        """)
-        logger.info("table created successfully or already existed")
-        
         # Commit the changes
         my_database.commit()
         
